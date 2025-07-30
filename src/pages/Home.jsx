@@ -1,7 +1,4 @@
-// src/pages/Home.jsx
-import React, { useEffect, useState } from "react";
-import NavBar from "../components/NavBar";
-import MovieCard from "../components/MovieCard";
+import { useEffect, useState } from "react";
 
 function Home() {
   const [movies, setMovies] = useState([]);
@@ -15,18 +12,10 @@ function Home() {
   return (
     <>
       <header>
-        <NavBar />
+        {/* What component should go here? */}
       </header>
       <main>
-        <h1>Home Page</h1>
-        <div>
-          {movies.map((movie) => (
-            <div key={movie.id}>
-              <MovieCard movie={movie} />
-              <a href={`/movie/${movie.id}`}>View Info</a>
-            </div>
-          ))}
-        </div>
+        {/* Info goes here! */}
       </main>
     </>
   );
