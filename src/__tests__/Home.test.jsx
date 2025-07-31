@@ -1,40 +1,37 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import { RouterProvider, createMemoryRouter} from "react-router-dom";
-import routes from "../routes";
+import { routes } from "../routes";
 
-// Utility to create a fresh router for each test
-const renderWithRouter = (initialEntries = ["/"]) => {
-  const router = createMemoryRouter(routes, { initialEntries });
-  return render(<RouterProvider router={router} />);
-};
 
-test("renders 'Home Page' inside of an <h1>", () => {
-  renderWithRouter();
-  const h1 = screen.getByRole("heading", { level: 1 });
+const router = createMemoryRouter(routes)
+
+test("renders 'Home Page' inside of an <h1 />", () => {
+  render(<RouterProvider router={router}/>);
+  const h1 = screen.queryByText(/Home Page/);
   expect(h1).toBeInTheDocument();
-  expect(h1.textContent).toMatch(/Home Page/i);
+  expect(h1.tagName).toBe("H1");
 });
 
-test("Displays a list of movie titles", async () => {
-  renderWithRouter();
-  const titleList = await screen.findAllByRole("heading", { level: 2 });
+test("Displays a list of movie titles", async () =>{
+  render(<RouterProvider router={router}/>);
+  const titleList = await screen.findAllByRole('heading', {level: 2})
   expect(titleList.length).toBeGreaterThan(2);
   expect(titleList[0].tagName).toBe("H2");
   expect(titleList[0].textContent).toBe("Doctor Strange");
-});
+})
 
-test("Displays links for each associated movie", async () => {
-  renderWithRouter();
-  const linkList = await screen.findAllByText(/View Info/i);
+test("Displays links for each associated movie", async () =>{
+  render(<RouterProvider router={router}/>);
+  const linkList = await screen.findAllByText(/View Info/);
   expect(linkList.length).toBeGreaterThan(2);
-
-  const url = new URL(linkList[0].href);
-  expect(url.pathname).toMatch(/^\/movie\/\d+$/);
-});
+  expect(linkList[0].href.split("/").slice(3).join("/")).toBe("movie/1");
+})
 
 test("renders the <NavBar /> component", () => {
-  renderWithRouter();
-  const navbar = document.querySelector(".navbar");
-  expect(navbar).toBeInTheDocument();
+  const router = createMemoryRouter(routes)
+  render(
+      <RouterProvider router={router}/>
+  );
+  expect(document.querySelector(".navbar")).toBeInTheDocument();
 });

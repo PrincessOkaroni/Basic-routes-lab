@@ -5,7 +5,6 @@ body {
   color: #333;
 }
 
-/* NavBar styles */
 nav {
   background-color: #333;
   padding: 10px;
@@ -22,25 +21,21 @@ nav a.active {
   text-decoration: underline;
 }
 
-/* Main content area: spacing */
 main {
   padding: 20px;
 }
 
-/* Pages: title styling */
 main h1 {
   font-size: 24px;
   margin-bottom: 15px;
 }
 
-/* Home page movie list layout */
 .movie-list {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
 
-/* Individual movie card */
 .movie-card {
   border: 1px solid #ccc;
   padding: 10px;
@@ -50,13 +45,11 @@ main h1 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Movie card title */
 .movie-card h2 {
   font-size: 18px;
   margin: 0 0 10px;
 }
 
-/* View Details link inside card */
 .movie-card a {
   color: #007bff;
   text-decoration: none;
@@ -66,7 +59,6 @@ main h1 {
   text-decoration: underline;
 }
 
-/* Articles list on Actors & Directors pages */
 article {
   background-color: #fff;
   border: 1px solid #ccc;
@@ -89,7 +81,6 @@ article li {
   margin-bottom: 5px;
 }
 
-/* Movie page genres */
 main span {
   display: inline-block;
   background-color: #007bff;
